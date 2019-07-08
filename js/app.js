@@ -3,10 +3,10 @@
 
 // global variables
 
-var source = [];
+var noise = [];
 var audioContext = new AudioContext();
 var gainNode = audioContext.createGain();
-var playEl = document.querySelector('button'); // stores DOM element reference by ID
+var playEl = document.getElementById('audio-button-1'); // references button element by ID
 
 // objects
 
@@ -39,13 +39,19 @@ var ogg = [
 
 // event handlers
 
+function appear() { // makes button visible after 1 second timer, allows executables to finish buffering before user plays audio
+  if(event.target) {  
+    setTimeout(function(){playEl.style.visibility = 'visible';}, 1000);
+  }
+}
+
 function startSounds() { // starts all audio assets
   for(var i = 0; i < ogg.length; i++) {
-    source[i] = audioContext.createBufferSource(); // mp3 player
-    source[i].buffer = ogg[i].buffer; // ogg files
-    source[i].connect(gainNode).connect(audioContext.destination); // wire and speakers with volume control
-    source[i].loop = true;
-    source[i].start();
+    noise[i] = audioContext.createBufferSource(); // mp3 player
+    noise[i].buffer = ogg[i].buffer; // ogg files
+    noise[i].connect(gainNode).connect(audioContext.destination); // wire and speakers with volume control
+    noise[i].loop = true;
+    noise[i].start();
   }
   playEl.removeEventListener('click', startSounds);
   playEl.addEventListener('click', stopSounds);
@@ -53,7 +59,7 @@ function startSounds() { // starts all audio assets
 
 function stopSounds() { // stops all audio assets
   for(var i = 0; i <ogg.length; i++) {
-    source[i].stop();
+    noise[i].stop();
   }
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
@@ -61,7 +67,9 @@ function stopSounds() { // stops all audio assets
 
 // event listers
 
+window.addEventListener('load', appear);
 playEl.addEventListener('click', startSounds);
+
 
 // executables
 
