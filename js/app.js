@@ -48,9 +48,11 @@ function appear() { // makes button visible after 1 second timer, allows executa
 function startSounds() { // starts all audio assets
   for(var i = 0; i < ogg.length; i++) {
     noise[i] = audioContext.createBufferSource(); // mp3 player
+    gainNode[i] = audioContext.createGain(); // creates gain node for each audio asset
     noise[i].buffer = ogg[i].buffer; // ogg files
-    noise[i].connect(gainNode).connect(audioContext.destination); // wire and speakers with volume control
+    noise[i].connect(gainNode[i]).connect(audioContext.destination); // wire and speakers with volume control
     noise[i].loop = true;
+    gainNode[i].gain.value = 0.4; // sets default volume
     noise[i].start();
   }
   playEl.removeEventListener('click', startSounds);
