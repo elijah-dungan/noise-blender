@@ -43,6 +43,7 @@ footer nav{
 .range-sliders {
     -webkit-appearance: none;
     height: 100px;
+    width: 50px;
     border-radius: 5px;
     writing-mode: bt-lr; /* IE */
     -webkit-appearance: slider-vertical; /* WebKit */

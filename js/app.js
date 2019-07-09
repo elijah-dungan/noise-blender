@@ -7,6 +7,7 @@
 var noise = [];
 var gainNode = [];
 var audioContext = new AudioContext();
+var slidersEl = document.getElementById('slide-container'); // references div element by ID
 var playEl = document.getElementById('audio-button-1'); // references button element by ID
 
 // objects
@@ -44,7 +45,7 @@ var ogg = [
 // event handlers
 
 function appear() { // makes button visible after 1 second timer, allows executables to finish buffering before user plays audio
-  if(event.target) {  
+  if(event.target) {
     setTimeout(function(){playEl.style.visibility = 'visible';}, 1000);
   }
 }
@@ -66,20 +67,40 @@ function startSounds() { // starts all audio assets
 }
 
 function stopSounds() { // stops all audio assets
+  var allSlidersEl = document.getElementsByClassName('range-sliders');
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
+    allSlidersEl[i].value = 50;
   }
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
 }
 
-//TODO need to add gain control event handler, event handler should store gain values into local memory
+// event handler should store gain values into local memory
+function adjustVolume() {
+  console.log(event.target.id);
+  console.log(event.target.value);
+  if(event.target.id === 'beach-slider') {
+    gainNode[0].gain.value = event.target.value / 100;
+  } else if(event.target.id === 'waterfall-slider') {
+    gainNode[1].gain.value = event.target.value / 100;
+  } else if(event.target.id === 'stream-slider') {
+    gainNode[2].gain.value = event.target.value / 100;
+  } else if(event.target.id === 'rain-slider') {
+    gainNode[3].gain.value = event.target.value / 100;
+  } else if(event.target.id === 'canopy-slider') {
+    gainNode[4].gain.value = event.target.value / 100;
+  } else if(event.target.id === 'frogs-slider') {
+    gainNode[5].gain.value = event.target.value / 100;
+  }
+}
 
 // event listers
 
 //TODO need to add gain control event listener
 window.addEventListener('load', appear);
 playEl.addEventListener('click', startSounds);
+slidersEl.addEventListener('input', adjustVolume);
 
 
 // executables
