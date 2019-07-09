@@ -68,7 +68,7 @@ footer nav{
     margin: 0;
     background: none;
     transition: 500ms;
-    opacity: 0.6;
+    opacity: 0.9;
 }
 .range-sliders:focus {
     margin: 0; 

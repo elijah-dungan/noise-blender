@@ -16,30 +16,36 @@ var playEl = document.getElementById('audio-button-1'); // references button ele
 
 // objects
 
-var ogg = [
+var source = [
   {
     name: 'beach',
-    buffer: ''
+    buffer: '',
+    value: '0.4'
   },
   {
     name: 'waterfall',
-    buffer: ''
+    buffer: '',
+    value: '0.425'
   },
   {
     name: 'stream',
-    buffer: ''
+    buffer: '',
+    value: '0.5'
   },
   {
     name: 'rain',
-    buffer: ''
+    buffer: '',
+    value: '0.5'
   },
   {
     name: 'canopy',
-    buffer: ''
+    buffer: '',
+    value: '0'
   },
   {
     name: 'frogs',
-    buffer: ''
+    buffer: '',
+    value: '0'
   }
 ];
 
@@ -79,31 +85,25 @@ function enable() { // makes button visible after 1 second timer, allows executa
 }
 
 function startSounds() { // starts all audio assets
-  slidersEl.addEventListener('input', adjustVolume);
   if(localStorage.sliderValues) {
     var unstringifiedSliderValues = localStorage.getItem('sliderValues');
     var pulledSliderValues = JSON.parse(unstringifiedSliderValues);
     var unstringifiedGainValues = localStorage.getItem('gainValues');
     var pulledGainValues = JSON.parse(unstringifiedGainValues);
   }
-  for(var i = 0; i < ogg.length; i++) {
-    mainSliderEl.disabled = false;
-    allSlidersEl[i].disabled = false;
-    allSlidersEl[i].style.opacity = '0.8';
-    mainSliderEl.style.opacity = '0.8';
+  for(var i = 0; i < source.length; i++) {
     gainNode[i] = audioContext.createGain(); // creates gain node for each audio asset
     noise[i] = audioContext.createBufferSource(); // creates audio players
-    noise[i].buffer = ogg[i].buffer; // assigns audio assets to buffers
+    noise[i].buffer = source[i].buffer; // assigns audio assets to buffers
     noise[i].connect(gainNode[i]).connect(audioContext.destination); // connects audio assets to volume controls and speakers
     noise[i].loop = true; // ensures each audio asset will loop
     noise[i].start();
   }
   if(localStorage.sliderValues) {
-    for(var v = 0; v < ogg.length; v++) {
+    for(var v = 0; v < source.length; v++) {
       allSlidersEl[v].value = pulledSliderValues[v];
       mainSliderEl.value = pulledSliderValues[6]; // need to figure out last child
       gainNode[v].gain.value = (pulledGainValues[v]);
-      console.log(gainNode[v].gain.value);
     }
   } else {
     defaultGainValues();
@@ -114,7 +114,7 @@ function startSounds() { // starts all audio assets
 }
 
 function stopSounds() { // stops all audio assets
-  for(var i = 0; i <ogg.length; i++) {
+  for(var i = 0; i <source.length; i++) {
     noise[i].stop();
   }
   playEl.removeEventListener('click', stopSounds);
@@ -126,38 +126,43 @@ function stopSounds() { // stops all audio assets
 function adjustVolume() {
   clearData();
   if(event.target.id === 'beach-slider') {
-    gainNode[0].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
+    source[0].value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'waterfall-slider') {
-    gainNode[1].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
+    source[1].value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'stream-slider') {
-    gainNode[2].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
+    source[2].value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'rain-slider') {
-    gainNode[3].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
+    source[3].value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'canopy-slider') {
-    gainNode[4].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
+    source[4].value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'frogs-slider') {
-    gainNode[5].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
+    source[5].value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'main-slider') {
-    for(var i = 0; i < ogg.length; i ++) {
-      gainNode[i].gain.value = (allSlidersEl[i].value / 100) * (mainSliderEl.value / 100);
+    for(var i = 0; i < source.length; i ++) {
+      source[i].value = (allSlidersEl[i].value / 100) * (mainSliderEl.value / 100);
     }
   }
-  for(var v = 0; v <ogg.length; v++) {
+  if(gainNode.length > 0) {
+    for(var q = 0; q < source.length; q++) {
+      gainNode[q].gain.value = source[q].value;
+    }
+  }
+  for(var v = 0; v < source.length; v++) {
     sliderValues.push(allSlidersEl[v].value);
-    gainValues.push(gainNode[v].gain.value);
+    gainValues.push(source[v].value);
   }
   sliderValues.push(mainSliderEl.value);
   var stringifiedSliderValues = JSON.stringify(sliderValues);
   var stringifiedGainValues = JSON.stringify(gainValues);
   localStorage.setItem('sliderValues', stringifiedSliderValues);
   localStorage.setItem('gainValues', stringifiedGainValues);
-  console.log(localStorage);
 }
 
 // event listers
 
 window.addEventListener('load', enable);
 playEl.addEventListener('click', startSounds);
+slidersEl.addEventListener('input', adjustVolume);
 
 // executables
 
@@ -168,36 +173,36 @@ fetch('https://elijah-dungan.github.io/ogg/beach.ogg')
   .then(response => response.arrayBuffer()) // takes response stream and reads it to completion
   .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer)) // takes completely read audio stream and asynchronously decodes it
   .then(audioBuffer => { // represents audio asset
-    ogg[0].buffer = audioBuffer;
+    source[0].buffer = audioBuffer;
   });
 fetch('https://elijah-dungan.github.io/ogg/waterfall.ogg')
   .then(response => response.arrayBuffer()) // takes response stream and reads it to completion
   .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer)) // asynchronously decodes completely read audio stream
   .then(audioBuffer => { // represents audio asset
-    ogg[1].buffer = audioBuffer;
+    source[1].buffer = audioBuffer;
   });
 fetch('https://elijah-dungan.github.io/ogg/stream.ogg')
   .then(response => response.arrayBuffer()) // takes response stream and reads it to completion
   .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer)) // asynchronously decodes completely read audio stream
   .then(audioBuffer => { // represents audio asset
-    ogg[2].buffer = audioBuffer;
+    source[2].buffer = audioBuffer;
   });
 fetch('https://elijah-dungan.github.io/ogg/rain.ogg')
   .then(response => response.arrayBuffer()) // takes response stream and reads it to completion
   .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer)) // asynchronously decodes completely read audio stream
   .then(audioBuffer => { // represents audio asset
-    ogg[3].buffer = audioBuffer;
+    source[3].buffer = audioBuffer;
   });
 fetch('https://elijah-dungan.github.io/ogg/canopy.ogg')
   .then(response => response.arrayBuffer()) // takes response stream and reads it to completion
   .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer)) // asynchronously decodes completely read audio stream
   .then(audioBuffer => { // represents audio asset
-    ogg[4].buffer = audioBuffer;
+    source[4].buffer = audioBuffer;
   });
 fetch('https://elijah-dungan.github.io/ogg/frogs.ogg')
   .then(response => response.arrayBuffer()) // takes response stream and reads it to completion
   .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer)) // asynchronously decodes completely read audio stream
   .then(audioBuffer => { // represents audio asset
-    ogg[5].buffer = audioBuffer;
+    source[5].buffer = audioBuffer;
   });
 
