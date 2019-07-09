@@ -45,13 +45,32 @@ var ogg = [
 
 // helper functions
 
+function clearData() {
+  localStorage.clear();
+  sliderValues = [];
+  gainValues = [];
+}
+
+function defaultGainValues() { // will need to rewrite default settings if more audio assets are added
+  mainSliderEl.value = 50;
+  allSlidersEl[0].value = 80;
+  gainNode[0].gain.value = 0.4;
+  allSlidersEl[1].value = 85;
+  gainNode[1].gain.value = 0.425;
+  allSlidersEl[2].value = 100;
+  gainNode[2].gain.value = 0.5;
+  allSlidersEl[3].value = 100;
+  gainNode[3].gain.value = 0.5;
+  allSlidersEl[4].value = 0;
+  gainNode[4].gain.value = 0;
+  allSlidersEl[5].value = 0;
+  gainNode[5].gain.value = 0;
+}
+
 // event handlers
 
-function enable() { // makes button visible after 1 second timer, allows executables to finish buffering before user plays audio
+function enable() { // makes button visible after 1 second timer, allows executables to finish buffering before user can play audio
   if(event.target) {
-    localStorage.clear();
-    sliderValues = [];
-    gainValues = [];
     setTimeout(function() {
       playEl.src = './img/playbuttonborderless.png';
       playEl.disabled = false;
@@ -74,17 +93,17 @@ function startSounds() { // starts all audio assets
     noise[i].buffer = ogg[i].buffer; // assigns audio assets to buffers
     noise[i].connect(gainNode[i]).connect(audioContext.destination); // connects audio assets to volume controls and speakers
     noise[i].loop = true; // ensures each audio asset will loop
-    if(localStorage.sliderValues) {
-      allSlidersEl[i].value = pulledSliderValues[i];
-      mainSliderEl.value = pulledSliderValues[6]; // need to figure out last child
-      gainNode[i].gain.value = (pulledGainValues[i]);
-      console.log(gainNode[i].gain.value);
-    } else {
-      allSlidersEl[i].value = 50;
-      mainSliderEl.value = 50;
-      gainNode[i].gain.value = 0.5;
-    }
     noise[i].start();
+  }
+  if(localStorage.sliderValues) {
+    for(var v = 0; v < ogg.length; v++) {
+      allSlidersEl[v].value = pulledSliderValues[v];
+      mainSliderEl.value = pulledSliderValues[6]; // need to figure out last child
+      gainNode[v].gain.value = (pulledGainValues[v]);
+      console.log(gainNode[v].gain.value);
+    }
+  } else {
+    defaultGainValues();
   }
   playEl.removeEventListener('click', startSounds);
   playEl.addEventListener('click', stopSounds);
@@ -92,9 +111,7 @@ function startSounds() { // starts all audio assets
 }
 
 function stopSounds() { // stops all audio assets
-  localStorage.clear();
-  sliderValues = [];
-  gainValues = [];
+  clearData();
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
     sliderValues.push(allSlidersEl[i].value);
@@ -138,13 +155,13 @@ function adjustVolume() {
 
 // event listers
 
-//TODO need to add gain control event listener
 window.addEventListener('load', enable);
 playEl.addEventListener('click', startSounds);
 slidersEl.addEventListener('input', adjustVolume);
 
-
 // executables
+
+clearData();
 
 /* attempted to create for loop but recieved undefined error with ogg array */
 fetch('https://elijah-dungan.github.io/ogg/beach.ogg')
