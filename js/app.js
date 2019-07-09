@@ -56,6 +56,7 @@ function startSounds() { // starts all audio assets
     mainSliderEl.disabled = false;
     allSlidersEl[i].disabled = false;
     allSlidersEl[i].value = 50;
+    mainSliderEl.value = 50;
     gainNode[i] = audioContext.createGain(); // creates gain node for each audio asset
     // TODO - need check for local memory and grab user gain values, then for loop the values into the gainNode array
     gainNode[i].gain.value = 0.5; // sets default volume
@@ -74,6 +75,7 @@ function stopSounds() { // stops all audio assets
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
     allSlidersEl[i].value = 50;
+    mainSliderEl.value = 50;
     mainSliderEl.disabled = true;
     allSlidersEl[i].disabled = true;
   }
