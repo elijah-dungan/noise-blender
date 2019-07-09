@@ -51,6 +51,7 @@ function enable() { // makes button visible after 1 second timer, allows executa
   if(event.target) {
     localStorage.clear();
     sliderValues = [];
+    gainValues = [];
     setTimeout(function() {
       playEl.src = './img/playbuttonborderless.png';
       playEl.disabled = false;
