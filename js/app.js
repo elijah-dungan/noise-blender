@@ -72,7 +72,7 @@ function defaultGainValues() { // will need to rewrite default settings if more 
 function enable() { // makes button visible after 1 second timer, allows executables to finish buffering before user can play audio
   if(event.target) {
     setTimeout(function() {
-      playEl.src = './img/playbuttonborderless.png';
+      playEl.src = './img/pausebuttonborderless.png';
       playEl.disabled = false;
     }, 1000);
   }
