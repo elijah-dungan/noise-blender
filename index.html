@@ -8,16 +8,24 @@
     </head>
     <body>
         <header>
-            <P>header test</P>
+            <nav>
+                <h1>Header</h1>
+            </nav>
         </header>
         <main>
-            <P>main test</P>
-            <button id="audio-button-1" class="audio-buttons">
-                <span>Play/Pause</span>
-            </button>
+            <div id="button-container">
+                <button id="audio-button-1" class="audio-buttons">
+                    Play/Stop
+                </button>
+            </div>
+            <div id="slide-container">
+                <input id="beach-slider" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="50" />
+            </div>
         </main>
         <footer>
-            <P>footer test</P>
+            <nav>
+                <h1>Footer</h1>
+            </nav>
         </footer>
         <script src="./js/app.js" type="text/javascript"></script>
     </body>
