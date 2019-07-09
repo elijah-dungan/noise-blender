@@ -21,6 +21,7 @@ header nav {
     font-family: 'Rubik Mono One', Arial, Helvetica, sans-serif;
     font-size: 3em;
     color: rgb(255, 255, 255);
+    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, .2); */
     opacity: 0.9;
 }
 main {
@@ -90,6 +91,7 @@ footer nav{
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -7px;
+    box-shadow: -2px 0px 4px rgba(0, 0, 0, .5);
 }
 #main-slide-container {
     /* border: 1px solid red; */
