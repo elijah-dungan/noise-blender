@@ -6,6 +6,7 @@
 
 var noise = [];
 var gainNode = [];
+var sliderValues = [];
 var audioContext = new AudioContext();
 var slidersEl = document.getElementById('slide-container'); // references div element by ID
 var allSlidersEl = document.getElementsByClassName('range-sliders'); // returns a node of sliders
@@ -55,18 +56,28 @@ function enable() { // makes button visible after 1 second timer, allows executa
 }
 
 function startSounds() { // starts all audio assets
+  if(localStorage.sliderValues) {
+    var unstringifiedSliderValues = localStorage.getItem('sliderValues');
+    var pulledValues = JSON.parse(unstringifiedSliderValues);
+  }
   for(var i = 0; i < ogg.length; i++) {
     mainSliderEl.disabled = false;
     allSlidersEl[i].disabled = false;
-    allSlidersEl[i].value = 50;
-    mainSliderEl.value = 50;
     gainNode[i] = audioContext.createGain(); // creates gain node for each audio asset
-    // TODO - need check for local memory and grab user gain values, then for loop the values into the gainNode array
-    gainNode[i].gain.value = 0.5; // sets default volume
     noise[i] = audioContext.createBufferSource(); // creates audio players
     noise[i].buffer = ogg[i].buffer; // assigns audio assets to buffers
     noise[i].connect(gainNode[i]).connect(audioContext.destination); // connects audio assets to volume controls and speakers
     noise[i].loop = true; // ensures each audio asset will loop
+    if(localStorage.sliderValues) {
+      allSlidersEl[i].value = pulledValues[i];
+      mainSliderEl.value = pulledValues[6]; // need to figure out last child
+      gainNode[i].gain.value = (pulledValues[i] / 100);
+      console.log(gainNode[i].gain.value);
+    } else {
+      allSlidersEl[i].value = 50;
+      mainSliderEl.value = 50;
+      gainNode[i].gain.value = 0.5;
+    }
     noise[i].start();
   }
   playEl.removeEventListener('click', startSounds);
@@ -75,16 +86,23 @@ function startSounds() { // starts all audio assets
 }
 
 function stopSounds() { // stops all audio assets
+  localStorage.clear();
+  sliderValues = [];
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
-    allSlidersEl[i].value = 50;
-    mainSliderEl.value = 50;
-    mainSliderEl.disabled = true;
+    sliderValues.push(allSlidersEl[i].value);
+    // allSlidersEl[i].value = 50;
+    // mainSliderEl.value = 50;
     allSlidersEl[i].disabled = true;
   }
+  mainSliderEl.disabled = true;
+  sliderValues.push(mainSliderEl.value);
+  var stringifiedSliderValues = JSON.stringify(sliderValues);
+  localStorage.setItem('sliderValues', stringifiedSliderValues);
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
   playEl.src = './img/pausebuttonborderless.png';
+  console.log(localStorage);
 }
 
 // event handler should store gain values into local memory
