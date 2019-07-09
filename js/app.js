@@ -45,9 +45,12 @@ var ogg = [
 
 // event handlers
 
-function appear() { // makes button visible after 1 second timer, allows executables to finish buffering before user plays audio
+function enable() { // makes button visible after 1 second timer, allows executables to finish buffering before user plays audio
   if(event.target) {
-    setTimeout(function(){playEl.style.visibility = 'visible';}, 1000);
+    setTimeout(function() {
+      playEl.src = './img/playbuttonborderless.png';
+      playEl.disabled = false;
+    }, 1000);
   }
 }
 
@@ -68,7 +71,7 @@ function startSounds() { // starts all audio assets
   }
   playEl.removeEventListener('click', startSounds);
   playEl.addEventListener('click', stopSounds);
-  console.log(gainNode, noise);
+  playEl.src = './img/playbuttonborderless.png';
 }
 
 function stopSounds() { // stops all audio assets
@@ -81,6 +84,7 @@ function stopSounds() { // stops all audio assets
   }
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
+  playEl.src = './img/pausebuttonborderless.png';
 }
 
 // event handler should store gain values into local memory
@@ -107,7 +111,7 @@ function adjustVolume() {
 // event listers
 
 //TODO need to add gain control event listener
-window.addEventListener('load', appear);
+window.addEventListener('load', enable);
 playEl.addEventListener('click', startSounds);
 slidersEl.addEventListener('input', adjustVolume);
 
