@@ -1,0 +1,50 @@
+body {
+    width: auto;
+    margin: 0;
+}
+header {
+    width: auto;
+    border: 1px solid red;
+    text-align: center;
+}
+header nav {
+    width: auto;
+    border: 1px solid red;
+    text-align: center;
+}
+main {
+    height: 80vh;
+    width: 960px;
+    margin: 0 auto;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+footer nav{
+    width: auto;
+    border: 1px solid red;
+    text-align: center;
+}
+#button-container {
+    width: auto;
+    padding: 1%;
+    border: 1px solid red;
+    text-align: center;
+}
+.audio-buttons {
+    visibility: hidden;
+}
+#slide-container {
+    width: auto;
+    border: 1px solid red;
+    text-align: center;
+}
+.range-sliders {
+    -webkit-appearance: none;
+    height: 100px;
+    width: 50px;
+    border-radius: 5px;
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+}
