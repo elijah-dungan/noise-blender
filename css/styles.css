@@ -36,11 +36,26 @@ footer nav{
     visibility: hidden;
 }
 #slide-container {
+    padding: 2%;
     width: auto;
     border: 1px solid red;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .range-sliders {
+    -webkit-appearance: none;
+    height: 100px;
+    width: 50px;
+    border-radius: 5px;
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+}
+#main-slide-container {
+    border: 1px solid red;
+    margin: 0 25px;
+}
+#main-slider {
     -webkit-appearance: none;
     height: 100px;
     width: 50px;

@@ -9,6 +9,7 @@ var gainNode = [];
 var audioContext = new AudioContext();
 var slidersEl = document.getElementById('slide-container'); // references div element by ID
 var allSlidersEl = document.getElementsByClassName('range-sliders'); // returns a node of sliders
+var mainSliderEl = document.getElementById('main-slider'); // references main slider element but ID
 var playEl = document.getElementById('audio-button-1'); // references button element by ID
 
 // objects
@@ -52,6 +53,7 @@ function appear() { // makes button visible after 1 second timer, allows executa
 
 function startSounds() { // starts all audio assets
   for(var i = 0; i < ogg.length; i++) {
+    mainSliderEl.disabled = false;
     allSlidersEl[i].disabled = false;
     allSlidersEl[i].value = 50;
     gainNode[i] = audioContext.createGain(); // creates gain node for each audio asset
@@ -72,6 +74,7 @@ function stopSounds() { // stops all audio assets
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
     allSlidersEl[i].value = 50;
+    mainSliderEl.disabled = true;
     allSlidersEl[i].disabled = true;
   }
   playEl.removeEventListener('click', stopSounds);
@@ -81,17 +84,21 @@ function stopSounds() { // stops all audio assets
 // event handler should store gain values into local memory
 function adjustVolume() {
   if(event.target.id === 'beach-slider') {
-    gainNode[0].gain.value = event.target.value / 100;
+    gainNode[0].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'waterfall-slider') {
-    gainNode[1].gain.value = event.target.value / 100;
+    gainNode[1].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'stream-slider') {
-    gainNode[2].gain.value = event.target.value / 100;
+    gainNode[2].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'rain-slider') {
-    gainNode[3].gain.value = event.target.value / 100;
+    gainNode[3].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'canopy-slider') {
-    gainNode[4].gain.value = event.target.value / 100;
+    gainNode[4].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'frogs-slider') {
-    gainNode[5].gain.value = event.target.value / 100;
+    gainNode[5].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
+  } else if(event.target.id === 'main-slider') {
+    for(var i = 0; i < ogg.length; i ++) {
+      gainNode[i].gain.value = (allSlidersEl[i].value / 100) * (mainSliderEl.value / 100);
+    }
   }
 }
 
