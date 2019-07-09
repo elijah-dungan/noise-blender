@@ -8,6 +8,7 @@ var noise = [];
 var gainNode = [];
 var audioContext = new AudioContext();
 var slidersEl = document.getElementById('slide-container'); // references div element by ID
+var allSlidersEl = document.getElementsByClassName('range-sliders'); // returns a node of sliders
 var playEl = document.getElementById('audio-button-1'); // references button element by ID
 
 // objects
@@ -41,7 +42,6 @@ var ogg = [
 
 // helper functions
 
-
 // event handlers
 
 function appear() { // makes button visible after 1 second timer, allows executables to finish buffering before user plays audio
@@ -52,6 +52,8 @@ function appear() { // makes button visible after 1 second timer, allows executa
 
 function startSounds() { // starts all audio assets
   for(var i = 0; i < ogg.length; i++) {
+    allSlidersEl[i].disabled = false;
+    allSlidersEl[i].value = 50;
     gainNode[i] = audioContext.createGain(); // creates gain node for each audio asset
     // TODO - need check for local memory and grab user gain values, then for loop the values into the gainNode array
     gainNode[i].gain.value = 0.5; // sets default volume
@@ -67,10 +69,10 @@ function startSounds() { // starts all audio assets
 }
 
 function stopSounds() { // stops all audio assets
-  var allSlidersEl = document.getElementsByClassName('range-sliders');
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
     allSlidersEl[i].value = 50;
+    allSlidersEl[i].disabled = true;
   }
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
@@ -78,8 +80,6 @@ function stopSounds() { // stops all audio assets
 
 // event handler should store gain values into local memory
 function adjustVolume() {
-  console.log(event.target.id);
-  console.log(event.target.value);
   if(event.target.id === 'beach-slider') {
     gainNode[0].gain.value = event.target.value / 100;
   } else if(event.target.id === 'waterfall-slider') {
