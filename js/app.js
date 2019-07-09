@@ -79,6 +79,7 @@ function enable() { // makes button visible after 1 second timer, allows executa
 }
 
 function startSounds() { // starts all audio assets
+  slidersEl.addEventListener('input', adjustVolume);
   if(localStorage.sliderValues) {
     var unstringifiedSliderValues = localStorage.getItem('sliderValues');
     var pulledSliderValues = JSON.parse(unstringifiedSliderValues);
@@ -88,6 +89,8 @@ function startSounds() { // starts all audio assets
   for(var i = 0; i < ogg.length; i++) {
     mainSliderEl.disabled = false;
     allSlidersEl[i].disabled = false;
+    allSlidersEl[i].style.opacity = '0.8';
+    mainSliderEl.style.opacity = '0.8';
     gainNode[i] = audioContext.createGain(); // creates gain node for each audio asset
     noise[i] = audioContext.createBufferSource(); // creates audio players
     noise[i].buffer = ogg[i].buffer; // assigns audio assets to buffers
@@ -111,29 +114,17 @@ function startSounds() { // starts all audio assets
 }
 
 function stopSounds() { // stops all audio assets
-  clearData();
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
-    sliderValues.push(allSlidersEl[i].value);
-    gainValues.push(gainNode[i].gain.value);
-    // allSlidersEl[i].value = 50;
-    // mainSliderEl.value = 50;
-    allSlidersEl[i].disabled = true;
   }
-  mainSliderEl.disabled = true;
-  sliderValues.push(mainSliderEl.value);
-  var stringifiedSliderValues = JSON.stringify(sliderValues);
-  var stringifiedGainValues = JSON.stringify(gainValues);
-  localStorage.setItem('sliderValues', stringifiedSliderValues);
-  localStorage.setItem('gainValues', stringifiedGainValues);
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
   playEl.src = './img/pausebuttonborderless.png';
-  console.log(localStorage);
 }
 
 // event handler should store gain values into local memory
 function adjustVolume() {
+  clearData();
   if(event.target.id === 'beach-slider') {
     gainNode[0].gain.value = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'waterfall-slider') {
@@ -151,13 +142,22 @@ function adjustVolume() {
       gainNode[i].gain.value = (allSlidersEl[i].value / 100) * (mainSliderEl.value / 100);
     }
   }
+  for(var v = 0; v <ogg.length; v++) {
+    sliderValues.push(allSlidersEl[v].value);
+    gainValues.push(gainNode[v].gain.value);
+  }
+  sliderValues.push(mainSliderEl.value);
+  var stringifiedSliderValues = JSON.stringify(sliderValues);
+  var stringifiedGainValues = JSON.stringify(gainValues);
+  localStorage.setItem('sliderValues', stringifiedSliderValues);
+  localStorage.setItem('gainValues', stringifiedGainValues);
+  console.log(localStorage);
 }
 
 // event listers
 
 window.addEventListener('load', enable);
 playEl.addEventListener('click', startSounds);
-slidersEl.addEventListener('input', adjustVolume);
 
 // executables
 
