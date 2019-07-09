@@ -7,6 +7,7 @@
 var noise = [];
 var gainNode = [];
 var sliderValues = [];
+var gainValues = [];
 var audioContext = new AudioContext();
 var slidersEl = document.getElementById('slide-container'); // references div element by ID
 var allSlidersEl = document.getElementsByClassName('range-sliders'); // returns a node of sliders
@@ -48,6 +49,8 @@ var ogg = [
 
 function enable() { // makes button visible after 1 second timer, allows executables to finish buffering before user plays audio
   if(event.target) {
+    localStorage.clear();
+    sliderValues = [];
     setTimeout(function() {
       playEl.src = './img/playbuttonborderless.png';
       playEl.disabled = false;
@@ -58,7 +61,9 @@ function enable() { // makes button visible after 1 second timer, allows executa
 function startSounds() { // starts all audio assets
   if(localStorage.sliderValues) {
     var unstringifiedSliderValues = localStorage.getItem('sliderValues');
-    var pulledValues = JSON.parse(unstringifiedSliderValues);
+    var pulledSliderValues = JSON.parse(unstringifiedSliderValues);
+    var unstringifiedGainValues = localStorage.getItem('gainValues');
+    var pulledGainValues = JSON.parse(unstringifiedGainValues);
   }
   for(var i = 0; i < ogg.length; i++) {
     mainSliderEl.disabled = false;
@@ -69,9 +74,9 @@ function startSounds() { // starts all audio assets
     noise[i].connect(gainNode[i]).connect(audioContext.destination); // connects audio assets to volume controls and speakers
     noise[i].loop = true; // ensures each audio asset will loop
     if(localStorage.sliderValues) {
-      allSlidersEl[i].value = pulledValues[i];
-      mainSliderEl.value = pulledValues[6]; // need to figure out last child
-      gainNode[i].gain.value = (pulledValues[i] / 100);
+      allSlidersEl[i].value = pulledSliderValues[i];
+      mainSliderEl.value = pulledSliderValues[6]; // need to figure out last child
+      gainNode[i].gain.value = (pulledGainValues[i]);
       console.log(gainNode[i].gain.value);
     } else {
       allSlidersEl[i].value = 50;
@@ -88,9 +93,11 @@ function startSounds() { // starts all audio assets
 function stopSounds() { // stops all audio assets
   localStorage.clear();
   sliderValues = [];
+  gainValues = [];
   for(var i = 0; i <ogg.length; i++) {
     noise[i].stop();
     sliderValues.push(allSlidersEl[i].value);
+    gainValues.push(gainNode[i].gain.value);
     // allSlidersEl[i].value = 50;
     // mainSliderEl.value = 50;
     allSlidersEl[i].disabled = true;
@@ -98,7 +105,9 @@ function stopSounds() { // stops all audio assets
   mainSliderEl.disabled = true;
   sliderValues.push(mainSliderEl.value);
   var stringifiedSliderValues = JSON.stringify(sliderValues);
+  var stringifiedGainValues = JSON.stringify(gainValues);
   localStorage.setItem('sliderValues', stringifiedSliderValues);
+  localStorage.setItem('gainValues', stringifiedGainValues);
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
   playEl.src = './img/pausebuttonborderless.png';
