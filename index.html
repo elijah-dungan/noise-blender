@@ -3,17 +3,23 @@
     <head>
         <title alt="main page">Noise Blender</title>
         <meta charset="utf-8"></meta> 
-        <link href="./css/styles.css" type="text/css" rel="stylesheet"/>
         <link href="./css/reset.css" type="text/css" rel="stylesheet"/>
+        <link href="./css/styles.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
         <header>
-            <nav>
-                <!-- <h1>Header</h1> -->
-            </nav>
+            <div id="logo-container">
+                    <button id="logo-tab">NOISE BLENDER</button>
+            </div>
+            <div id="tab-container">
+                <button class="tab">HOME</button>
+                <button class="tab">MORE SOUNDS</button>
+                <button class="tab">ABOUT</button>
+                <button class="tab">BLOG</button>
+                <button id="contact-tab" class="tab">CONTACT</button>
+            </div>
         </header>
         <main>
-            <h1 id="hero-title">NOISE BLENDER</h1>
             <div id="button-container">
                 <input id="audio-button-1" class="audio-buttons" type="image" src="./img/pausebuttonborderlesstrans.png" disabled>
             </div>
@@ -31,9 +37,17 @@
             </div>
         </main>
         <footer>
-            <nav>
-                <!-- <h1>Footer</h1> -->
-            </nav>
+            <div id="follow">
+                <div id="social-media">
+                    <img src="./img/facebook_white.png" />
+                    <img src="./img/twitter_white.png" />
+                    <img src="./img/linkedin_white.png" />
+                    <img src="./img/youtube_white.png" />
+                </div>
+            </div>
+            <div id="copyright">
+                <p>Copyright &copy; 2019, Elijah Dungan</p>
+            </div>
         </footer>
         <script src="./js/app.js" type="text/javascript"></script>
     </body>

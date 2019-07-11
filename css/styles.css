@@ -1,5 +1,6 @@
-
-
+* {
+    text-decoration: none;
+}
 body {
     background-color: rgb(0, 150, 150);
     width: auto;
@@ -7,41 +8,64 @@ body {
     margin: 0;
 }
 header {
-    width: auto;
-    /* border: 1px solid red; */
-    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-header nav {
+#logo-container {
     width: auto;
-    /* border: 1px solid red; */
-    text-align: center;
 }
-#hero-title {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 3em;
+#logo-tab {
+    margin: 0 -4px 0 0;
+    width: auto;
+    height: 80px;
+    padding: 0 30px;
+    border: none;
+    background-color: transparent;
+    font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 25px;
     color: rgb(255, 255, 255);
-    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, .2); */
-    opacity: 0.9;
+    /* border-right: 1px solid rgba(255, 255, 255, 0.5); */
+}
+#tab-container {
+    margin: 0;
+}
+.tab {
+    margin: 0 -4px 0 0;
+    width: auto;
+    height: 80px;
+    padding: 0 30px;
+    border: none;
+    background-color: transparent;
+    font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+.tab:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+#contact-tab {
+    margin-right: 0;
 }
 main {
-    height: 100vh;
+    height: 81vh;
     width: 960px;
     margin: 0 auto;
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 footer nav{
     width: auto;
-    /* border: 1px solid red; */
     text-align: center;
 }
 #button-container {
     width: auto;
     padding: 2%;
-    /* border: 1px solid red; */
     text-align: center;
 }
 .audio-buttons {
@@ -54,7 +78,6 @@ footer nav{
 #slide-container {
     padding: 2%;
     width: auto;
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -91,6 +114,29 @@ footer nav{
     box-shadow: -2px 0px 4px -1px rgba(0, 0, 0, .5);
 }
 #main-slide-container {
-    /* border: 1px solid red; */
     margin: 0 10px;
+}
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: white;
+}
+#follow {
+    width: 95%;
+    margin: 0 auto;
+}
+#social-media img {
+    margin: 0;
+    padding: 23px 20px 5px 0;
+    width: auto;
+    height: 25px;
+}
+#copyright {
+    padding: 0 0 25px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
 }
