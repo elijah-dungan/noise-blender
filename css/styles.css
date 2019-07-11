@@ -48,11 +48,11 @@ header {
 .tab:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-#contact-tab {
+#last-tab {
     margin-right: 0;
 }
 main {
-    height: 81vh;
+    height: 82vh;
     width: 960px;
     margin: 0 auto;
     display: flex;
@@ -75,7 +75,7 @@ footer nav{
     outline: none;
     opacity: 0.8;
 }
-#slide-container {
+#slider-container {
     padding: 2%;
     width: auto;
     display: flex;
@@ -116,6 +116,23 @@ footer nav{
 #main-slide-container {
     margin: 0 10px;
 }
+#labels-container {
+    width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.slider-controls-labels {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
 footer {
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     width: auto;
@@ -129,7 +146,7 @@ footer {
 }
 #social-media img {
     margin: 0;
-    padding: 23px 20px 5px 0;
+    padding: 23px 20px 0 0;
     width: auto;
     height: 25px;
 }
