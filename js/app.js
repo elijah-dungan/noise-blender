@@ -35,7 +35,7 @@ function Sound(name, extension, sliderDefault, volumeDefault) {
   allSounds.push(this);
 }
 
-function renderDefaultSounds() {
+function renderDefaultSounds() { // creates object instances of default sounds, then renders the audio for playback
   var thunder = new Sound('thunder', 'ogg', '100', '0.5');
   var rain = new Sound('rain', 'ogg', '100', '0.5');
   var beach = new Sound('beach', 'ogg', '0', '0');
@@ -54,13 +54,13 @@ function renderDefaultSounds() {
 
 // helper functions
 
-function clearData() {
+function clearData() { // facilitates data overwriting by clearing localStorage, sliderValues, and gainValues
   localStorage.clear();
   sliderValues = [];
   gainValues = [];
 }
 
-function defaultGainValues() {
+function defaultGainValues() { // sets the sliders and gain to default values specified in instances of Sound constructor function
   mainSliderEl.value = 50;
   for(var i = 0; i < allSounds.length; i ++) {
     allSlidersEl[i].value = allSounds[i].sliderDefault;
@@ -79,7 +79,7 @@ function enable() { // makes button visible after 1 second timer, allows executa
   }
 }
 
-// TODO: create new event handler/listener that upon selection from a dropdown menu, it (1) stops sounds, (2) clears the allSounds, audioBufferSourceNodes, and gainNodes arrays; (3) renders new sounds based on selection, (4) changes the background video, and (5) calls a loading function that disables the play/pause button until the rendering is complete
+// TODO: create new event handler/listener that upon selection from a dropdown menu, it (1) stops sounds, (2) clears the allSounds, audioBufferSourceNodes, and gainNodes arrays; (3) renders new sounds based on scene selection, (4) changes the background video to a new video based on scene selection, (5) calls a loading function that disables the play/pause button until the rendering is complete, and (6) manipulates the DOm by overwriting slider labels with new labels from the selected scene
 
 //TODO: consider removing the enable event handler once a loading function is created
 
@@ -121,8 +121,10 @@ function stopSounds() { // stops all audio assets
   playEl.src = './img/pausebuttonborderless.png';
 }
 
-function adjustVolume() {
-  clearData();
+//TODO: consider rewriting adjustVolume code so that localStorage is handled more efficiently and specifically (local storage data is pulled and overwritten without using the clear() function and the associated for loops. This will produce more written code, but the browser will run less code
+
+function adjustVolume() { // adjusts volume according to user movement of sliders
+  clearData(); // clears current volume data to allow for overwrite
   if(event.target.id === 'slider-1') { // stores new values for volumeDefault
     allSounds[0].volumeDefault = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'slider-2') {
@@ -152,10 +154,10 @@ function adjustVolume() {
     gainValues.push(allSounds[v].volumeDefault); // pushes to array that temporarily stores values for localStorage
   }
   sliderValues.push(mainSliderEl.value); // pushes to array that temporarily stores values for localStorage
-  var stringifiedSliderValues = JSON.stringify(sliderValues);
-  var stringifiedGainValues = JSON.stringify(gainValues);
-  localStorage.setItem('sliderValues', stringifiedSliderValues);
-  localStorage.setItem('gainValues', stringifiedGainValues);
+  var stringifiedSliderValues = JSON.stringify(sliderValues); // stringifies sliderValues for localStorage
+  var stringifiedGainValues = JSON.stringify(gainValues); // stringifies gainValues for localStorage
+  localStorage.setItem('sliderValues', stringifiedSliderValues); // stores sliderValues into localStorage
+  localStorage.setItem('gainValues', stringifiedGainValues); // stores gainValues into localStorage
 }
 
 // event listers
