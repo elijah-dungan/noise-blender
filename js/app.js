@@ -49,7 +49,7 @@ function renderOscilloscope1() {
   requestAnimationFrame(renderOscilloscope1);
   analyserNodes[0].getByteTimeDomainData(waveformData[0]);
   canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
+  canvasCtx.lineWidth = 5;
   canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
   canvasCtx.beginPath();
   var sliceWidth = 300 * 1.0 / bufferLengths[0];
@@ -72,7 +72,7 @@ function renderOscilloscope2() {
   requestAnimationFrame(renderOscilloscope2);
   analyserNodes[1].getByteTimeDomainData(waveformData[1]);
   canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
+  canvasCtx.lineWidth = 5;
   canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
   canvasCtx.beginPath();
   var sliceWidth = 300 * 1.0 / bufferLengths[1];
@@ -95,7 +95,7 @@ function renderOscilloscope3() {
   requestAnimationFrame(renderOscilloscope3);
   analyserNodes[2].getByteTimeDomainData(waveformData[2]);
   canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
+  canvasCtx.lineWidth = 5;
   canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
   canvasCtx.beginPath();
   var sliceWidth = 300 * 1.0 / bufferLengths[2];
@@ -118,7 +118,7 @@ function renderOscilloscope4() {
   requestAnimationFrame(renderOscilloscope4);
   analyserNodes[3].getByteTimeDomainData(waveformData[3]);
   canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
+  canvasCtx.lineWidth = 5;
   canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
   canvasCtx.beginPath();
   var sliceWidth = 300 * 1.0 / bufferLengths[3];
@@ -141,7 +141,7 @@ function renderOscilloscope5() {
   requestAnimationFrame(renderOscilloscope5);
   analyserNodes[4].getByteTimeDomainData(waveformData[4]);
   canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
+  canvasCtx.lineWidth = 5;
   canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
   canvasCtx.beginPath();
   var sliceWidth = 300 * 1.0 / bufferLengths[4];
@@ -164,7 +164,7 @@ function renderOscilloscope6() {
   requestAnimationFrame(renderOscilloscope6);
   analyserNodes[5].getByteTimeDomainData(waveformData[5]);
   canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
+  canvasCtx.lineWidth = 5;
   canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
   canvasCtx.beginPath();
   var sliceWidth = 300 * 1.0 / bufferLengths[5];
@@ -187,7 +187,7 @@ function renderOscilloscope7() {
   requestAnimationFrame(renderOscilloscope7);
   analyserNodes[6].getByteTimeDomainData(waveformData[6]);
   canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
+  canvasCtx.lineWidth = 5;
   canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
   canvasCtx.beginPath();
   var sliceWidth = 300 * 1.0 / bufferLengths[6];
