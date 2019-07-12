@@ -16,18 +16,24 @@ header {
 #logo-container {
     width: auto;
 }
+#oscilloscope {
+    vertical-align: middle;
+    overflow-x: hidden;
+    height: 75px;
+    width: 306px;
+}
 #logo-tab {
+    vertical-align: middle;
     margin: 0 -4px 0 0;
     width: auto;
     height: 80px;
-    padding: 0 30px;
+    padding: 0  15px 0 30px;
     border: none;
     background-color: transparent;
     font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
     font-weight: bold;
     font-size: 25px;
     color: rgb(255, 255, 255);
-    /* border-right: 1px solid rgba(255, 255, 255, 0.5); */
 }
 #tab-container {
     margin: 0;
