@@ -1,6 +1,9 @@
 'use-strict';
 
-/* special thanks goes to Johan Karisson https://codepen.io/DonKarlssonSan/post/drum-loops-and-effects-with-web-audio-api, MDN https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API, and W3 Schools https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+/* special thanks/credit:
+Johan Karisson https://codepen.io/DonKarlssonSan/post/drum-loops-and-effects-with-web-audio-api
+MDN https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API
+W3Schools https://www.w3schools.com/howto/howto_js_rangeslider.asp */
 
 // global variables
 
@@ -40,6 +43,169 @@ function Sound(name, extension, sliderDefault, volumeDefault) {
   allSounds.push(this);
 }
 
+// functions NOTE: attempted to refactor renderOscilloscope functions but parameters would not be accepted by audio API
+
+function renderOscilloscope1() {
+  requestAnimationFrame(renderOscilloscope1);
+  analyserNodes[0].getByteTimeDomainData(waveformData[0]);
+  canvasCtx.clearRect(0, 0, 300, 150);
+  canvasCtx.lineWidth = 6;
+  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
+  canvasCtx.beginPath();
+  var sliceWidth = 300 * 1.0 / bufferLengths[0];
+  var x = 0.29296875;
+  for(var i = 0; i < bufferLengths[0]; i++) {
+    var v = (waveformData[0][i] / 128.0);
+    var y = v * 75;
+    if(i === 0) {
+      canvasCtx.moveTo(x, y);
+    } else {
+      canvasCtx.lineTo(x, y);
+    }
+    x += sliceWidth;
+  }
+  canvasCtx.lineTo(canvas.width, canvas.height/2);
+  canvasCtx.stroke();
+}
+
+function renderOscilloscope2() {
+  requestAnimationFrame(renderOscilloscope2);
+  analyserNodes[1].getByteTimeDomainData(waveformData[1]);
+  canvasCtx.clearRect(0, 0, 300, 150);
+  canvasCtx.lineWidth = 6;
+  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
+  canvasCtx.beginPath();
+  var sliceWidth = 300 * 1.0 / bufferLengths[1];
+  var x = 0.29296875;
+  for(var i = 0; i < bufferLengths[1]; i++) {
+    var v = (waveformData[1][i] / 128.0);
+    var y = v * 75;
+    if(i === 0) {
+      canvasCtx.moveTo(x, y);
+    } else {
+      canvasCtx.lineTo(x, y);
+    }
+    x += sliceWidth;
+  }
+  canvasCtx.lineTo(canvas.width, canvas.height/2);
+  canvasCtx.stroke();
+}
+
+function renderOscilloscope3() {
+  requestAnimationFrame(renderOscilloscope3);
+  analyserNodes[2].getByteTimeDomainData(waveformData[2]);
+  canvasCtx.clearRect(0, 0, 300, 150);
+  canvasCtx.lineWidth = 6;
+  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
+  canvasCtx.beginPath();
+  var sliceWidth = 300 * 1.0 / bufferLengths[2];
+  var x = 0.29296875;
+  for(var i = 0; i < bufferLengths[2]; i++) {
+    var v = (waveformData[2][i] / 128.0);
+    var y = v * 75;
+    if(i === 0) {
+      canvasCtx.moveTo(x, y);
+    } else {
+      canvasCtx.lineTo(x, y);
+    }
+    x += sliceWidth;
+  }
+  canvasCtx.lineTo(canvas.width, canvas.height/2);
+  canvasCtx.stroke();
+}
+
+function renderOscilloscope4() {
+  requestAnimationFrame(renderOscilloscope4);
+  analyserNodes[3].getByteTimeDomainData(waveformData[3]);
+  canvasCtx.clearRect(0, 0, 300, 150);
+  canvasCtx.lineWidth = 6;
+  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
+  canvasCtx.beginPath();
+  var sliceWidth = 300 * 1.0 / bufferLengths[3];
+  var x = 0.29296875;
+  for(var i = 0; i < bufferLengths[3]; i++) {
+    var v = (waveformData[3][i] / 128.0);
+    var y = v * 75;
+    if(i === 0) {
+      canvasCtx.moveTo(x, y);
+    } else {
+      canvasCtx.lineTo(x, y);
+    }
+    x += sliceWidth;
+  }
+  canvasCtx.lineTo(canvas.width, canvas.height/2);
+  canvasCtx.stroke();
+}
+
+function renderOscilloscope5() {
+  requestAnimationFrame(renderOscilloscope5);
+  analyserNodes[4].getByteTimeDomainData(waveformData[4]);
+  canvasCtx.clearRect(0, 0, 300, 150);
+  canvasCtx.lineWidth = 6;
+  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
+  canvasCtx.beginPath();
+  var sliceWidth = 300 * 1.0 / bufferLengths[4];
+  var x = 0.29296875;
+  for(var i = 0; i < bufferLengths[4]; i++) {
+    var v = (waveformData[4][i] / 128.0);
+    var y = v * 75;
+    if(i === 0) {
+      canvasCtx.moveTo(x, y);
+    } else {
+      canvasCtx.lineTo(x, y);
+    }
+    x += sliceWidth;
+  }
+  canvasCtx.lineTo(canvas.width, canvas.height/2);
+  canvasCtx.stroke();
+}
+
+function renderOscilloscope6() {
+  requestAnimationFrame(renderOscilloscope6);
+  analyserNodes[5].getByteTimeDomainData(waveformData[5]);
+  canvasCtx.clearRect(0, 0, 300, 150);
+  canvasCtx.lineWidth = 6;
+  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
+  canvasCtx.beginPath();
+  var sliceWidth = 300 * 1.0 / bufferLengths[5];
+  var x = 0.29296875;
+  for(var i = 0; i < bufferLengths[5]; i++) {
+    var v = (waveformData[5][i] / 128.0);
+    var y = v * 75;
+    if(i === 0) {
+      canvasCtx.moveTo(x, y);
+    } else {
+      canvasCtx.lineTo(x, y);
+    }
+    x += sliceWidth;
+  }
+  canvasCtx.lineTo(canvas.width, canvas.height/2);
+  canvasCtx.stroke();
+}
+
+function renderOscilloscope7() {
+  requestAnimationFrame(renderOscilloscope7);
+  analyserNodes[6].getByteTimeDomainData(waveformData[6]);
+  canvasCtx.clearRect(0, 0, 300, 150);
+  canvasCtx.lineWidth = 6;
+  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
+  canvasCtx.beginPath();
+  var sliceWidth = 300 * 1.0 / bufferLengths[6];
+  var x = 0.29296875;
+  for(var i = 0; i < bufferLengths[6]; i++) {
+    var v = (waveformData[6][i] / 128.0);
+    var y = v * 75;
+    if(i === 0) {
+      canvasCtx.moveTo(x, y);
+    } else {
+      canvasCtx.lineTo(x, y);
+    }
+    x += sliceWidth;
+  }
+  canvasCtx.lineTo(canvas.width, canvas.height/2);
+  canvasCtx.stroke();
+}
+
 function renderDefaultSounds() { // creates object instances of default sounds, then renders the audio for playback
   var thunder = new Sound('thunder', 'ogg', '100', '0.5');
   var rain = new Sound('rain', 'ogg', '100', '0.5');
@@ -55,29 +221,6 @@ function renderDefaultSounds() { // creates object instances of default sounds, 
   stream.fetchAudio();
   canopy.fetchAudio();
   frogs.fetchAudio();
-}
-
-function renderOscilloscope() {
-  requestAnimationFrame(renderOscilloscope);
-  analyserNodes[0].getByteTimeDomainData(waveformData[0]);
-  canvasCtx.clearRect(0, 0, 300, 150);
-  canvasCtx.lineWidth = 6;
-  canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
-  canvasCtx.beginPath();
-  var sliceWidth = 300 * 1.0 / bufferLengths[0];
-  var x = 0.29296875;
-  for(var i = 0; i < bufferLengths[0]; i++) {
-    var v = waveformData[0][i] / 128.0;
-    var y = v * 75;
-    if(i === 0) {
-      canvasCtx.moveTo(x, y);
-    } else {
-      canvasCtx.lineTo(x, y);
-    }
-    x += sliceWidth;
-  }
-  canvasCtx.lineTo(canvas.width, canvas.height/2);
-  canvasCtx.stroke();
 }
 
 // helper functions
@@ -143,7 +286,7 @@ function startSounds() { // starts all audio assets
   playEl.removeEventListener('click', startSounds);
   playEl.addEventListener('click', stopSounds);
   playEl.src = './img/playbuttonborderless.png';
-  renderOscilloscope();
+  renderOscilloscope1();
 }
 
 function stopSounds() { // stops all audio assets
@@ -194,11 +337,30 @@ function adjustVolume() { // adjusts volume according to user movement of slider
   localStorage.setItem('gainValues', stringifiedGainValues); // stores gainValues into localStorage
 }
 
+function changeOscilloscope() {
+  if(event.target.id === 'slider-1') { // stores new values for volumeDefault
+    renderOscilloscope1();
+  } else if(event.target.id === 'slider-2') {
+    renderOscilloscope2();
+  } else if(event.target.id === 'slider-3') {
+    renderOscilloscope3();
+  } else if(event.target.id === 'slider-4') {
+    renderOscilloscope4();
+  } else if(event.target.id === 'slider-5') {
+    renderOscilloscope5();
+  } else if(event.target.id === 'slider-6') {
+    renderOscilloscope6();
+  } else if(event.target.id === 'slider-7') {
+    renderOscilloscope7();
+  }
+}
+
 // event listers
 
 window.addEventListener('load', enable);
 playEl.addEventListener('click', startSounds);
 slidersEl.addEventListener('input', adjustVolume);
+slidersEl.addEventListener('mouseover', changeOscilloscope);
 
 // executables
 
