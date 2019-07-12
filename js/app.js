@@ -300,8 +300,8 @@ function stopSounds() { // stops all audio assets
 
 //TODO: consider rewriting adjustVolume code so that localStorage is handled more efficiently and specifically (local storage data is pulled and overwritten without using the clear() function and the associated for loops. This will produce more written code, but the browser will run less code
 
-function adjustVolume() { // adjusts volume according to user movement of sliders
-  clearData(); // clears current volume data to allow for overwrite
+function adjustVolume() { // adjusts volume according to movement of the sliders
+  clearData(); // clears current volume data to facilitate overwrite
   if(event.target.id === 'slider-1') { // stores new values for volumeDefault
     allSounds[0].volumeDefault = (event.target.value / 100) * (mainSliderEl.value / 100);
   } else if(event.target.id === 'slider-2') {
@@ -337,8 +337,8 @@ function adjustVolume() { // adjusts volume according to user movement of slider
   localStorage.setItem('gainValues', stringifiedGainValues); // stores gainValues into localStorage
 }
 
-function changeOscilloscope() {
-  if(event.target.id === 'slider-1') { // stores new values for volumeDefault
+function changeOscilloscope() { // changes oscilloscope on mouseover
+  if(event.target.id === 'slider-1') {
     renderOscilloscope1();
   } else if(event.target.id === 'slider-2') {
     renderOscilloscope2();
@@ -360,7 +360,7 @@ function changeOscilloscope() {
 window.addEventListener('load', enable);
 playEl.addEventListener('click', startSounds);
 slidersEl.addEventListener('input', adjustVolume);
-slidersEl.addEventListener('mouseover', changeOscilloscope);
+slidersEl.addEventListener('mousedown', changeOscilloscope);
 
 // executables
 
