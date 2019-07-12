@@ -79,7 +79,7 @@ function enable() { // makes button visible after 1 second timer, allows executa
   }
 }
 
-// TODO: create new event handler/listener that upon selection from a dropdown menu, it (1) stops sounds, (2) clears the allSounds, audioBufferSourceNodes, and gainNodes arrays; (3) renders new sounds based on scene selection, (4) changes the background video to a new video based on scene selection, (5) calls a loading function that disables the play/pause button until the rendering is complete, and (6) manipulates the DOm by overwriting slider labels with new labels from the selected scene
+// TODO: create new event handler/listener that upon selection from a dropdown menu, it (1) stops current sounds, (2) clears the allSounds, audioBufferSourceNodes, and gainNodes arrays; (3) renders new sounds based on scene selection, (4) changes the background video to a new video based on scene selection, (5) calls a loading function that disables the play/pause button until the rendering is complete, and (6) manipulates the DOm by overwriting slider labels with new labels from the selected scene
 
 //TODO: consider removing the enable event handler once a loading function is created
 
