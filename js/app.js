@@ -239,6 +239,10 @@ function defaultGainValues() { // sets the sliders and gain to default values sp
   }
 }
 
+function canvasSettings() {
+  
+}
+
 // event handlers
 
 function enable() { // makes button visible after 1 second timer, allows executables to finish buffering before user can play audio
