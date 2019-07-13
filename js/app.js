@@ -248,7 +248,7 @@ function defaultGainValues() { // sets the sliders and gain to default values sp
 function enable() { // makes button visible after 1 second timer, allows executables to finish buffering before user can play audio
   if(event.target) {
     setTimeout(function() {
-      playEl.src = './img/pausebuttonborderless.png';
+      playEl.src = './img/playbuttonborderless.png';
       playEl.disabled = false;
     }, 1000);
   }
@@ -288,7 +288,7 @@ function startSounds() { // starts all audio assets
   }
   playEl.removeEventListener('click', startSounds);
   playEl.addEventListener('click', stopSounds);
-  playEl.src = './img/playbuttonborderless.png';
+  playEl.src = './img/pausebuttonborderless.png';
   if(lastMouseDown !== 0) { // check to see which oscilloscope was last activated
   } else {
     renderOscilloscope1(); // runs default oscilloscope
@@ -301,7 +301,7 @@ function stopSounds() { // stops all audio assets
   }
   playEl.removeEventListener('click', stopSounds);
   playEl.addEventListener('click', startSounds);
-  playEl.src = './img/pausebuttonborderless.png';
+  playEl.src = './img/playbuttonborderless.png';
 }
 
 //TODO: consider rewriting adjustVolume code so that localStorage is handled more efficiently and specifically (local storage data is pulled and overwritten without using the clear() function and the associated for loops. This will produce more written code, but the browser will run less code
