@@ -150,6 +150,7 @@ function enable() { // makes button visible after 1 second timer, allows executa
       playEl.src = './img/playbuttonborderless.png';
       playEl.disabled = false;
     }, 1000);
+    window.removeEventListener('load', enable);
   }
 }
 
