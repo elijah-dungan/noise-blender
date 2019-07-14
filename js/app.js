@@ -70,11 +70,11 @@ function Music(name, genre, artist, mainInstrument, duration, extension, sliderD
 // var clairDeLune = new Music('clairDeLune', 'mp3', '100', '0.5');
 
 function renderDefaultSounds() { // creates default instances and renders the audio assets for playback
-  var thunder = new Sound('thunder', 'ogg', '100', '0.5');
-  var rain = new Sound('rain', 'ogg', '100', '0.5');
+  var thunder = new Sound('thunder', 'ogg', '100', '0.25');
+  var rain = new Sound('rain', 'ogg', '100', '0.25');
   var beach = new Sound('beach', 'ogg', '0', '0');
-  var waterfall = new Sound('waterfall', 'ogg', '85', '0.425');
-  var stream = new Sound('stream', 'ogg', '100', '0.5');
+  var waterfall = new Sound('waterfall', 'ogg', '85', '0.2125');
+  var stream = new Sound('stream', 'ogg', '100', '0.25');
   var canopy = new Sound('canopy', 'ogg', '0', '0');
   var frogs = new Sound('frogs', 'ogg', '0', '0');
   thunder.fetchAudio();
@@ -123,11 +123,11 @@ function clearData() { // facilitates data overwriting by clearing localStorage,
 }
 
 function defaultGainValues() { // sets the sliders and gain to default values specified in instances of Sound constructor function
-  mainSliderEl.value = 50;
   for(var i = 0; i < allSounds.length; i ++) {
     allSlidersEl[i].value = allSounds[i].sliderDefault;
     gainNodes[i].gain.value = allSounds[i].volumeDefault;
   }
+  mainSliderEl.value = 25;
 }
 
 function findIndexOfHighestGain() { // this function is used to pass an index of the loudest sound. It is useful for displaying a default oscilloscope
