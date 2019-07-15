@@ -157,6 +157,16 @@ function enable() { // makes button visible after 1 second timer, allows executa
   }
 }
 
+function enableTest() { // makes button visible after 1 second timer, allows executables to finish buffering before user can play audio
+  setTimeout(function() {
+    playEl.src = './img/playbuttonborderless.png';
+    playEl.disabled = false;
+  }, 1250);
+  playEl.addEventListener('click', startSounds);
+  window.removeEventListener('load', enable);
+}
+
+
 // TODO: create new event handler/listener that upon selection from a dropdown menu, it (1) stops current sounds, (2) clears the allSounds, audioBufferSourceNodes, and gainNodes arrays; (3) calls AudioContext.close(), (4) renders new sounds based on scene selection, (5) changes event listener and reinitializes sounds on click of the play/pause buttone, (6) changes the background video to a new video based on scene selection, (7) calls a loading function that disables the play/pause button until the rendering is complete, and (8) manipulates the DOm by overwriting slider labels with new labels from the selected scene
 // TODO: consider removing the enable event handler once a loading function is created
 
@@ -268,7 +278,7 @@ function changeOscilloscope() { // changes oscilloscope on mouseover
 
 /* -----event listers-----*/
 
-window.addEventListener('load', enable);
+// window.addEventListener('load', enable);
 slidersEl.addEventListener('input', adjustVolume);
 slidersEl.addEventListener('mousedown', changeOscilloscope);
 
@@ -276,3 +286,4 @@ slidersEl.addEventListener('mousedown', changeOscilloscope);
 
 clearData();
 renderDefaultSounds(); // preloads the default sounds on page load
+enableTest();
