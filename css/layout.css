@@ -18,6 +18,7 @@
     margin: 0;
 }
 .tab {
+    cursor: pointer;
     vertical-align: middle;
     margin: 0 -4px 0 0;
     height: 80px;
@@ -92,23 +93,4 @@ footer nav{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8em;
     font-weight: bold;
-}
-@media only screen and (max-width: 996px) {
-    .tab {
-        display: none;
-    }
-    #trigram-tab {
-        display: initial;
-    }
-}
-@media only screen and (max-width: 768px) {
-    #slider-container {
-        flex-direction: column;
-    }
-    #slider-divider-left{
-        margin: 18px 0 0 0;
-    }
-    #slider-divider-right{
-        margin: 40px 0 0 0;
-    }
 }

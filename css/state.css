@@ -8,9 +8,6 @@
     #trigram-tab {
         display: initial;
     }
-    /* #slider-container {
-        margin: 10px 0 0 0;
-    } */
 }
 @media only screen and (max-width: 768px) {
     main {
@@ -20,7 +17,7 @@
         flex-direction: column;
     }
     #slider-divider-left{
-        margin: 16px 0 0 0;
+        margin: 16.5px 0 0 0;
     }
     #slider-divider-right{
         margin: 40px 0 0 0;
