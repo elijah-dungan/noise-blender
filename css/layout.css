@@ -44,14 +44,14 @@
 #button-container {
     text-align: center;
     width: auto;
-    padding: 2%;
+    padding: 15px;
 }
 #slider-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: auto;
-    padding: 2%;
+    padding: 28px 15px 15px 15px;
 }
 #slider-divider-left{
     display: flex;

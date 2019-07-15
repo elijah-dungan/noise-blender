@@ -10,14 +10,17 @@
     }
 }
 @media only screen and (max-width: 768px) {
+    header {
+        min-width: 563px;
+    }
     main {
         width: 563px;
     }
+    footer {
+        min-width: 563px;
+    }
     #slider-container {
         flex-direction: column;
-    }
-    #slider-divider-left{
-        margin: 16.5px 0 0 0;
     }
     #slider-divider-right{
         margin: 40px 0 0 0;
