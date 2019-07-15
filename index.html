@@ -4,7 +4,10 @@
         <title alt="main page">Noise Blender</title>
         <meta charset="utf-8"></meta> 
         <link href="./css/reset.css" type="text/css" rel="stylesheet"/>
-        <link href="./css/styles.css" type="text/css" rel="stylesheet"/>
+        <link href="./css/base.css" type="text/css" rel="stylesheet"/>
+        <link href="./css/layout.css" type="text/css" rel="stylesheet"/>
+        <link href="./css/module.css" type="text/css" rel="stylesheet"/>
+        <link href="./css/state.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
         <header>
@@ -14,13 +17,13 @@
             </div>
             <div id="tab-container">
                 <button class="tab">SCENES</button>
-                <button class="tab">MUSIC</button>
                 <button class="tab">ABOUT</button>
                 <button class="tab">CONTACT</button>
                 <button id="last-tab" class="tab">DONATE</button>
             </div>
         </header>
         <main>
+            <audio id="music-player" preload></audio>
             <div id="button-container">
                 <input id="audio-button-1" class="audio-buttons" type="image" src="./img/playbuttonborderlesstrans.png" disabled>
             </div>
