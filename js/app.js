@@ -153,7 +153,6 @@ function enable() { // makes button visible after 1 second timer, allows executa
       playEl.disabled = false;
     }, 1250);
     playEl.addEventListener('click', startSounds);
-    playEl.addEventListener('touchstart', startSounds);
     window.removeEventListener('load', enable);
   }
 }
