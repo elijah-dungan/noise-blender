@@ -158,10 +158,8 @@ function enable() { // makes button visible after 1 second timer, allows executa
 }
 
 function enableTest() { // makes button visible after 1 second timer, allows executables to finish buffering before user can play audio
-  setTimeout(function() {
-    playEl.src = './img/playbuttonborderless.png';
-    playEl.disabled = false;
-  }, 1250);
+  playEl.src = './img/playbuttonborderless.png';
+  playEl.disabled = false;
   playEl.addEventListener('click', startSounds);
   window.removeEventListener('load', enable);
 }
