@@ -8,13 +8,19 @@
     #trigram-tab {
         display: initial;
     }
+    /* #slider-container {
+        margin: 10px 0 0 0;
+    } */
 }
 @media only screen and (max-width: 768px) {
+    main {
+        width: 563px;
+    }
     #slider-container {
         flex-direction: column;
     }
     #slider-divider-left{
-        margin: 18px 0 0 0;
+        margin: 16px 0 0 0;
     }
     #slider-divider-right{
         margin: 40px 0 0 0;
