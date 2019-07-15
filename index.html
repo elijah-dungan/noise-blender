@@ -16,10 +16,11 @@
                     <canvas id="oscilloscope"></canvas>
             </div>
             <div id="tab-container">
-                <button class="tab">SCENES</button>
-                <button class="tab">ABOUT</button>
-                <button class="tab">CONTACT</button>
-                <button id="last-tab" class="tab">DONATE</button>
+                <button id="scenes-tab" class="tab">SCENES</button>
+                <button id="about-tab" class="tab">ABOUT</button>
+                <button id="contact-tab"class="tab">CONTACT</button>
+                <button id="donate-tab" class="tab">DONATE</button>
+                <button id="trigram-tab" class="tab">&#9776;</button>
             </div>
         </header>
         <main>
@@ -28,40 +29,44 @@
                 <input id="audio-button-1" class="audio-buttons" type="image" src="./img/playbuttonborderlesstrans.png" disabled>
             </div>
             <div id="slider-container">
-                <div class="slider-controls-labels">
-                    <input id="slider-1" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="100" >
-                    <h2 id="label-1">Thunder</h2>
-                </div>
-                <div class="slider-controls-labels">
-                    <input id="slider-2" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="100" >
-                    <h2 id="label-2">Rain</h2>
-                </div>
-                <div class="slider-controls-labels">
-                    <input id="slider-3" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="0" >
-                    <h2 id="label-3">Beach</h2>
-                </div>
-                <div class="slider-controls-labels">
-                    <input id="slider-4" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="85" >
-                    <h2 id="label-4">Waterfall</h2>
-                </div>
-                <div class="slider-controls-labels">
-                    <input id="slider-5" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="100" >
-                    <h2 id="label-5">Stream</h2>
-                </div>
-                <div class="slider-controls-labels">
-                    <input id="slider-6" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="0" >
-                    <h2 id="label-6">Canopy</h2>
-                </div>
-                <div class="slider-controls-labels">
-                    <input id="slider-7" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="0" >
-                    <h2 id="label-7">Frogs</h2>
-                </div>
-                <div class="slider-controls-labels">
-                    <div id="main-slide-container">
-                        <input id="slider-main" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="25" >
+                <div id="slider-divider-left">
+                    <div class="slider-controls-labels">
+                        <input id="slider-1" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="100" >
+                        <h2 id="label-1">Thunder</h2>
                     </div>
-                    <h2>Main</h2>
-                </div>    
+                    <div class="slider-controls-labels">
+                        <input id="slider-2" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="100" >
+                        <h2 id="label-2">Rain</h2>
+                    </div>
+                    <div class="slider-controls-labels">
+                        <input id="slider-3" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="0" >
+                        <h2 id="label-3">Beach</h2>
+                    </div>
+                    <div class="slider-controls-labels">
+                        <input id="slider-4" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="85" >
+                        <h2 id="label-4">Waterfall</h2>
+                    </div>
+                </div>
+                <div id="slider-divider-right">
+                    <div class="slider-controls-labels">
+                        <input id="slider-5" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="100" >
+                        <h2 id="label-5">Stream</h2>
+                    </div>
+                    <div class="slider-controls-labels">
+                        <input id="slider-6" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="0" >
+                        <h2 id="label-6">Canopy</h2>
+                    </div>
+                    <div class="slider-controls-labels">
+                        <input id="slider-7" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="0" >
+                        <h2 id="label-7">Frogs</h2>
+                    </div>
+                    <div class="slider-controls-labels">
+                        <div id="main-slide-container">
+                            <input id="slider-main" class="range-sliders" orient="vertical" type="range" min="0" max="100" value="25" >
+                        </div>
+                        <h2>Main</h2>
+                    </div>  
+                </div>  
             </div>
         </main>
         <footer>

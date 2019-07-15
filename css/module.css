@@ -1,3 +1,9 @@
+#oscilloscope {
+    vertical-align: middle;
+    overflow-x: hidden;
+    height: 75px;
+    width: 218px; /* TODO: readjust when logo has been implemented */
+}
 .audio-buttons {
     vertical-align: top;
     height: auto;
