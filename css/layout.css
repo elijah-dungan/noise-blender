@@ -1,85 +1,180 @@
-#logo-container {
-    width: auto;
+/* -----for desktop----- */
+@media only screen and (min-width: 1086px) {
+    #logo-container {
+        width: auto;
+    }
+    #logo-tab {
+        vertical-align: middle;
+        height: 80px;
+        width: auto;
+        margin: 0 -4px 0 0;
+        border: none;
+        padding: 0  15px 0 30px;
+        background-color: transparent;
+        color: rgb(255, 255, 255);
+        font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    #oscilloscope {
+        vertical-align: middle;
+        overflow-x: hidden;
+        height: 75px;
+        width: 306px;
+    }
+    #tab-container {
+        margin: 0;
+    }
+    .tab {
+        margin: 0 -4px 0 0;
+        height: 80px;
+        width: auto;
+        border: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        outline: none;
+        padding: 0 30px;
+        background-color: transparent;
+        color: rgb(255, 255, 255);
+        font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #last-tab {
+        margin-right: 0;
+    }
+    #button-container {
+        text-align: center;
+        width: auto;
+        padding: 2%;
+    }
+    #slider-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        padding: 2%;
+    }
+    #main-slide-container {
+        margin: 0;
+    }
+    #labels-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 960px;
+        margin: 0 auto;
+    }
+    footer nav{
+        text-align: center;
+        width: auto;
+    }
+    #follow {
+        width: 95%;
+        margin: 0 auto;
+    }
+    #social-media img {
+        height: 25px;
+        width: auto;
+        margin: 0;
+        padding: 23px 20px 0 0;
+    }
+    #copyright {
+        text-align: center;
+        padding: 0 0 25px 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
 }
-#logo-tab {
-    vertical-align: middle;
-    height: 80px;
-    width: auto;
-    margin: 0 -4px 0 0;
-    border: none;
-    padding: 0  15px 0 30px;
-    background-color: transparent;
-    color: rgb(255, 255, 255);
-    font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
-    font-size: 25px;
-    font-weight: bold;
-}
-#oscilloscope {
-    vertical-align: middle;
-    overflow-x: hidden;
-    height: 75px;
-    width: 306px;
-}
-#tab-container {
-    margin: 0;
-}
-.tab {
-    margin: 0 -4px 0 0;
-    height: 80px;
-    width: auto;
-    border: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    outline: none;
-    padding: 0 30px;
-    background-color: transparent;
-    color: rgb(255, 255, 255);
-    font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-}
-#last-tab {
-    margin-right: 0;
-}
-#button-container {
-    text-align: center;
-    width: auto;
-    padding: 2%;
-}
-#slider-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: auto;
-    padding: 2%;
-}
-#main-slide-container {
-    margin: 0 10px;
-}
-#labels-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 960px;
-    margin: 0 auto;
-}
-footer nav{
-    text-align: center;
-    width: auto;
-}
-#follow {
-    width: 95%;
-    margin: 0 auto;
-}
-#social-media img {
-    height: 25px;
-    width: auto;
-    margin: 0;
-    padding: 23px 20px 0 0;
-}
-#copyright {
-    text-align: center;
-    padding: 0 0 25px 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
-    font-weight: bold;
+/* -----for mobile----- */
+@media only screen and (max-width: 1086px) {
+    #logo-container {
+        min-width: 553px;
+        width: auto;
+    }
+    #logo-tab {
+        vertical-align: middle;
+        height: 80px;
+        width: auto;
+        margin: 0 -4px 0 0;
+        border: none;
+        padding: 0  15px 0 30px;
+        background-color: transparent;
+        color: rgb(255, 255, 255);
+        font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    #oscilloscope {
+        vertical-align: middle;
+        overflow-x: hidden;
+        height: 75px;
+        width: 306px;
+    }
+    #tab-container {
+        min-width: 489px;
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        margin: 0;
+    }
+    .tab {
+        float: right;
+        margin: 0 -4px 0 0;
+        height: 80px;
+        width: auto;
+        border: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        outline: none;
+        padding: 0 30px;
+        background-color: transparent;
+        color: rgb(255, 255, 255);
+        font-family: 'Arial Narrow Bold', Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #last-tab {
+        margin-right: 0;
+    }
+    #button-container {
+        text-align: center;
+        width: auto;
+        padding: 2%;
+    }
+    #slider-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        padding: 2%;
+    }
+    #main-slide-container {
+        margin: 0;
+    }
+    #labels-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 960px;
+        margin: 0 auto;
+    }
+    footer nav{
+        text-align: center;
+        width: auto;
+    }
+    #follow {
+        width: 95%;
+        margin: 0 auto;
+    }
+    #social-media img {
+        height: 25px;
+        width: auto;
+        margin: 0;
+        padding: 23px 20px 0 0;
+    }
+    #copyright {
+        text-align: center;
+        padding: 0 0 25px 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
 }
