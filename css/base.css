@@ -19,7 +19,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 82vh;
+    height: 81vh;
     margin: 0 auto;
 }
 footer {
@@ -27,5 +27,4 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
 }

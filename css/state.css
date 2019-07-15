@@ -26,3 +26,80 @@
         margin: 40px 0 0 0;
     }
 }
+@media only screen and (max-device-width: 768px) {
+    header {
+        min-width: 563px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    }
+    #logo-tab {
+        height: 160px;
+        width: auto;
+        margin: 0 -8px 0 0;
+        padding: 0  30px 0 60px;
+        font-size: 50px;
+    }
+    #oscilloscope {
+        height: 150px;
+        width: 286px; /* TODO: readjust when logo has been implemented */
+    }
+    .tab {
+        height: 160px;
+        margin: 0 -8px 0 0;
+        border-left: 2px solid rgba(255, 255, 255, 0.5);
+        padding: 0 60px;
+        font-size: 30px;
+    }
+    #trigram-tab {
+        font-size: 48px;
+    }
+    main {
+        width: 563px;
+    }
+    footer {
+        min-width: 563px;
+        border-top: 2px solid rgba(255, 255, 255, 0.5);
+    }
+    .audio-buttons {
+        width: 150px;
+    }
+    .range-sliders {
+        width: 160px;
+        height: 100px;
+    }
+    .range-sliders::-webkit-slider-runnable-track {
+        height: 48.78px;
+        width: 200px;
+        border: 4px solid rgb(250, 250, 250);
+        border-radius: 30px;
+    }
+    .range-sliders::-webkit-slider-thumb {
+        height: 44px;
+        width: 44px;
+        margin-top: -2px;
+        border: 2px solid rgb(200, 200, 200);
+        border-radius: 30px;
+        box-shadow: -4px 0px 8px -2px rgba(0, 0, 0, .5);
+    }
+    .slider-controls-labels {
+        height: 200px;
+        font-size: 30px;
+    }
+    #slider-container {
+        margin: 36px 0 0 0;
+        flex-direction: column;
+    }
+    #slider-divider-right{
+        margin: 80px 0 0 0;
+    }
+    #follow {
+        margin: 0 auto;
+    }
+    #social-media img {
+        height: 50px;
+        padding: 46px 40px 0 0;
+    }
+    #copyright {
+        padding: 20px 0 50px 0;
+        font-size: 1.6em;
+    }
+}
