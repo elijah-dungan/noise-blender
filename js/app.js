@@ -99,7 +99,7 @@ function renderOscilloscope(index) {
     canvasCtx.strokeStyle = 'rgb(250, 250, 250)';
     canvasCtx.beginPath();
     var sliceWidth = 300 * 1.0 / bufferLengths[index];
-    var x = 0.29296875;
+    var x = 0;
     for(var i = 0; i < bufferLengths[index]; i++) {
       var v = (waveformData[index][i] / 128.0);
       var y = v * 75;
@@ -151,7 +151,8 @@ function enable() { // makes button visible after 1 second timer, allows executa
     setTimeout(function() {
       playEl.src = './img/playbuttonborderless.png';
       playEl.disabled = false;
-    }, 1000);
+    }, 1250);
+    playEl.addEventListener('click', startSounds);
     window.removeEventListener('load', enable);
   }
 }
@@ -268,7 +269,6 @@ function changeOscilloscope() { // changes oscilloscope on mouseover
 /* -----event listers-----*/
 
 window.addEventListener('load', enable);
-playEl.addEventListener('click', startSounds);
 slidersEl.addEventListener('input', adjustVolume);
 slidersEl.addEventListener('mousedown', changeOscilloscope);
 

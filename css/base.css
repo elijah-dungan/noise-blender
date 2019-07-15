@@ -1,6 +1,7 @@
 * {
     text-decoration: none;
 }
+
 body {
     height: auto;
     width: auto;
@@ -8,20 +9,23 @@ body {
     background-color: rgb(0, 150, 150);
 }
 header {
+    min-width: 564px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 main {
+    min-width: 564px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 82vh;
-    width: 960px;
+    /* width: 960px; */
     margin: 0 auto;
 }
 footer {
+    min-width: 564px;
     width: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     color: rgb(255, 255, 255);
